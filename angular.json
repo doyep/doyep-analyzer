@@ -77,6 +77,35 @@
 					}
 				}
 			}
+		},
+		"ngx-strava-client": {
+			"projectType": "library",
+			"root": "projects/ngx-strava-client",
+			"sourceRoot": "projects/ngx-strava-client/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular/build:ng-packagr",
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/ngx-strava-client/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/ngx-strava-client/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"tsConfig": "projects/ngx-strava-client/tsconfig.spec.json"
+					}
+				}
+			}
 		}
+	},
+	"cli": {
+		"analytics": false
 	}
 }
