@@ -64,17 +64,7 @@
 					"builder": "@angular/build:extract-i18n"
 				},
 				"test": {
-					"builder": "@angular/build:karma",
-					"options": {
-						"tsConfig": "tsconfig.spec.json",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "public"
-							}
-						],
-						"styles": ["src/styles.css"]
-					}
+					"builder": "@angular/build:unit-test"
 				}
 			}
 		},
@@ -97,10 +87,7 @@
 					"defaultConfiguration": "production"
 				},
 				"test": {
-					"builder": "@angular/build:karma",
-					"options": {
-						"tsConfig": "projects/ngx-strava-client/tsconfig.spec.json"
-					}
+					"builder": "@angular/build:unit-test"
 				}
 			}
 		}
