@@ -2,14 +2,14 @@
  * Required param for Strava Access Request.
  * Must be `code`
  */
-type RequestAccessResponseType = 'code';
+type AccessRequestResponseType = 'code';
 
 /**
  * Option to show the authorization prompt.
  * Use `force` to always show the prompt even if the user has
  * already authorized the current application.
  */
-export type RequestAccessApprovalPrompt = 'force' | 'auto';
+type AccessRequestApprovalPrompt = 'force' | 'auto';
 
 /**
  * Requested scopes. The scope activity:read is required for activity webhooks.
@@ -34,7 +34,7 @@ export type RequestAccessApprovalPrompt = 'force' | 'auto';
  * `activity:write` : access to create manual activities and uploads, and access to edit
  *  any activities that are visible to the app, based on activity read access level
  */
-export type RequestAccessScope =
+type AccessRequestScope =
 	| 'read'
 	| 'read_all'
 	| 'profile:read_all'
@@ -44,18 +44,24 @@ export type RequestAccessScope =
 	| 'activity:write';
 
 /**
- * All params used for Strava Access Request
+ * Options needed from Angular Application to perform a strava access request.
  */
-export type RequestAccessParams = {
+export type AccessRequestOptions = {
 	clientId: string;
 	redirectUri: string;
-	responseType: RequestAccessResponseType;
-	approval_prompt?: RequestAccessApprovalPrompt;
-	scopes: RequestAccessScope[];
+	approvalPrompt?: AccessRequestApprovalPrompt;
+	scopes: AccessRequestScope[];
 	state?: string;
 };
 
 /**
- * Params needed from Angular Application to perform a strava access request.
+ * Params required for Strava Access Request
  */
-export type RequestAccessOptions = Omit<RequestAccessParams, 'responseType'>;
+export type AccessRequestParams = {
+	clientId: string;
+	redirectUri: string;
+	responseType: AccessRequestResponseType;
+	approvalPrompt?: AccessRequestApprovalPrompt;
+	scope: string;
+	state?: string;
+};
