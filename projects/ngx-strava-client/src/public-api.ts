@@ -5,7 +5,8 @@ export type {
 	TokenExchangeOptions,
 	TokenExchangeResponse,
 	RefreshTokenResponse,
-} from './lib/token-exchange';
+} from './lib/exchange-token';
+export { withExchangeToken } from './lib/exchange-token';
 
 export type { StravaFeature } from './lib/provide-strava-services';
 export { provideStravaServices } from './lib/provide-strava-services';
