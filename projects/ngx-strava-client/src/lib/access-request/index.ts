@@ -1,3 +1,3 @@
-export * from './access-request';
-export * from './oauth2-feature';
-export * from './tokens';
+export * from './access-request-feature';
+export * from './access-request-model';
+export * from './access-request-tokens';

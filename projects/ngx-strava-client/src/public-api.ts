@@ -1,5 +1,5 @@
 export type { AccessRequestOptions } from './lib/access-request';
-export { withOAuth2, STRAVA_OAUTH2_URL } from './lib/access-request';
+export { withAccessRequest, STRAVA_OAUTH2_URL } from './lib/access-request';
 
 export type {
 	TokenExchangeOptions,

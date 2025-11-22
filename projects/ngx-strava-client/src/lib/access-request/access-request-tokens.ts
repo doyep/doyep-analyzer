@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { AccessRequestOptions } from './access-request';
+import { AccessRequestOptions } from './access-request-model';
 
 /**
  * Injection token providing the configuration options for the access request

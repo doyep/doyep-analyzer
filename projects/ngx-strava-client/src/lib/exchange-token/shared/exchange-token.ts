@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { RefreshTokenResponse, TokenExchangeResponse } from './token-exchange';
+import { RefreshTokenResponse, TokenExchangeResponse } from './token-exchange-model';
 
 @Injectable()
-export abstract class TokenExchangeService {
+export abstract class ExchangeToken {
 	protected readonly http = inject(HttpClient);
 
-	abstract exchangeToken$(authorizationCode: string): Observable<TokenExchangeResponse>;
-	abstract refreshToken$(refreshToken: string): Observable<RefreshTokenResponse>;
+	abstract exchange$(authorizationCode: string): Observable<TokenExchangeResponse>;
+	abstract refresh$(refreshToken: string): Observable<RefreshTokenResponse>;
 
 	deauthorize$(accessToken: string): Observable<object> {
 		const url = new URL('https://www.strava.com/oauth/deauthorize');

@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { RefreshTokenResponse, TokenExchangeResponse } from '../token-exchange';
-import { TokenExchangeService } from '../token-exchange.service';
-import { BACKEND_EXCHANGE_TOKEN_URL, BACKEND_REFRESH_TOKEN_URL } from './tokens';
+import { RefreshTokenResponse, TokenExchangeResponse } from '../shared/token-exchange-model';
+import { ExchangeToken } from '../shared/exchange-token';
+import { BACKEND_EXCHANGE_TOKEN_URL, BACKEND_REFRESH_TOKEN_URL } from './backend-tokens';
 
 /**
  * Service implementation that performs the OAuth2 token exchange
@@ -14,20 +14,20 @@ import { BACKEND_EXCHANGE_TOKEN_URL, BACKEND_REFRESH_TOKEN_URL } from './tokens'
  * an authorization code or refreshing an access token, as it avoids
  * exposing the Strava client secret on the client-side application.
  *
- * This class extends {@link TokenExchangeService}.
+ * This class extends {@link ExchangeToken}.
  */
 @Injectable()
-export class BackendTokenExchangeService extends TokenExchangeService {
+export class BackendEchangeToken extends ExchangeToken {
 	readonly #echangeTokenUrl = inject(BACKEND_EXCHANGE_TOKEN_URL);
 	readonly #refreshTokenUrl = inject(BACKEND_REFRESH_TOKEN_URL);
 
-	override exchangeToken$(authorizationCode: string): Observable<TokenExchangeResponse> {
+	override exchange$(authorizationCode: string): Observable<TokenExchangeResponse> {
 		return this.http.post<TokenExchangeResponse>(this.#echangeTokenUrl, {
 			authorizationCode: authorizationCode,
 		});
 	}
 
-	override refreshToken$(refreshToken: string): Observable<RefreshTokenResponse> {
+	override refresh$(refreshToken: string): Observable<RefreshTokenResponse> {
 		return this.http.post<RefreshTokenResponse>(this.#refreshTokenUrl, {
 			refreshToken: refreshToken,
 		});

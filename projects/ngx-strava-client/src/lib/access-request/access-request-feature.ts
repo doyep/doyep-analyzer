@@ -1,5 +1,9 @@
-import { AccessRequestOptions, AccessRequestParams } from './access-request';
-import { STRAVA_ACCESS_REQUEST_OPTIONS, STRAVA_CLIENT_ID, STRAVA_OAUTH2_URL } from './tokens';
+import { AccessRequestOptions, AccessRequestParams } from './access-request-model';
+import {
+	STRAVA_ACCESS_REQUEST_OPTIONS,
+	STRAVA_CLIENT_ID,
+	STRAVA_OAUTH2_URL,
+} from './access-request-tokens';
 import { StravaFeature } from '../provide-strava-services';
 
 /**
@@ -25,7 +29,7 @@ function buildUrl(config: AccessRequestParams): string {
  * @param config
  * @returns StravaFeature
  */
-export function withOAuth2(factory: () => AccessRequestOptions): StravaFeature {
+export function withAccessRequest(factory: () => AccessRequestOptions): StravaFeature {
 	return {
 		ɵproviders: [
 			{ provide: STRAVA_ACCESS_REQUEST_OPTIONS, useFactory: factory, deps: [] },

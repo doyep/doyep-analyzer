@@ -1,5 +1,5 @@
-import { BackendTokenExchangeOptions } from './backend';
-import { ClientSecretTokenExchangeOptions } from './client-secret';
+import { BackendExchangeTokenOptions } from '../backend';
+import { ClientSecretExchangeTokenOptions } from '../client-secret';
 
 /**
  * Token Exchange Type
@@ -9,7 +9,7 @@ export type TokenExchangeType = 'CLIENT_SECRET' | 'BACKEND';
 /**
  * Params need for TokenExchangeService
  */
-export type TokenExchangeOptions = ClientSecretTokenExchangeOptions | BackendTokenExchangeOptions;
+export type TokenExchangeOptions = ClientSecretExchangeTokenOptions | BackendExchangeTokenOptions;
 
 /**
  * Exchange token informations including

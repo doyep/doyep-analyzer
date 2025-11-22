@@ -1,3 +1,3 @@
 export * from './exchange-token-feature';
-export * from './token-exchange';
+export * from './shared';
 export * from './tokens';

@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { TokenExchangeOptions } from './token-exchange';
+import { TokenExchangeOptions } from './shared/token-exchange-model';
 
 /**
  * Injection token providing the options for token exchange.

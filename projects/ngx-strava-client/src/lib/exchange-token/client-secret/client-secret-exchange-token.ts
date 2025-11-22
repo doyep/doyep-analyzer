@@ -3,9 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { STRAVA_CLIENT_ID } from '../../access-request';
-import { TokenExchangeService } from '../token-exchange.service';
-import { RefreshTokenResponse, TokenExchangeResponse } from '../token-exchange';
-import { STRAVA_CLIENT_SECRET } from './tokens';
+import { ExchangeToken } from '../shared/exchange-token';
+import { RefreshTokenResponse, TokenExchangeResponse } from '../shared/token-exchange-model';
+import { STRAVA_CLIENT_SECRET } from './client-secret-tokens';
 
 /**
  * @deprecated This service performs the OAuth2 token exchange directly from the client
@@ -18,11 +18,11 @@ import { STRAVA_CLIENT_SECRET } from './tokens';
  * This class is kept for legacy or fallback scenarios in which no backend is available.
  */
 @Injectable()
-export class ClientSecretTokenService extends TokenExchangeService {
+export class ClientSecretExchangeToken extends ExchangeToken {
 	readonly #clientId = inject(STRAVA_CLIENT_ID);
 	readonly #clientSecret = inject(STRAVA_CLIENT_SECRET);
 
-	exchangeToken$(authorizationCode: string): Observable<TokenExchangeResponse> {
+	exchange$(authorizationCode: string): Observable<TokenExchangeResponse> {
 		const url = new URL('https://www.strava.com/oauth/token');
 		url.searchParams.set('client_id', this.#clientId);
 		url.searchParams.set('client_secret', this.#clientSecret);
@@ -32,7 +32,7 @@ export class ClientSecretTokenService extends TokenExchangeService {
 		return this.http.post<TokenExchangeResponse>(url.toString(), {});
 	}
 
-	refreshToken$(refreshToken: string): Observable<RefreshTokenResponse> {
+	refresh$(refreshToken: string): Observable<RefreshTokenResponse> {
 		const url = new URL('https://www.strava.com/oauth/token');
 		url.searchParams.set('client_id', this.#clientId);
 		url.searchParams.set('client_secret', this.#clientSecret);

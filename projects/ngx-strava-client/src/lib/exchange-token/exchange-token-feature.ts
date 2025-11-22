@@ -2,8 +2,8 @@ import { Provider } from '@angular/core';
 import { StravaFeature } from '../provide-strava-services';
 
 import { STRAVA_TOKEN_EXCHANGE_OPTIONS, TokenExchangeOptions, TokenExchangeType } from '.';
-import { provideClientSecret } from './client-secret';
-import { provideBackend } from './backend';
+import { provideClientSecretExchangeToken } from './client-secret';
+import { provideBackendExchangeToken } from './backend';
 
 export function withExchangeToken(
 	type: TokenExchangeType,
@@ -18,11 +18,11 @@ export function withExchangeToken(
 	];
 
 	if (type === 'CLIENT_SECRET') {
-		providers.push(...provideClientSecret());
+		providers.push(...provideClientSecretExchangeToken());
 	}
 
 	if (type === 'BACKEND') {
-		providers.push(...provideBackend());
+		providers.push(...provideBackendExchangeToken());
 	}
 
 	return { ɵproviders: providers };
