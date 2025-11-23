@@ -6,6 +6,7 @@
 		"ng": "ng",
 		"dev": "ng serve",
 		"start": "ng serve",
+		"prebuild": "ng build --project ngx-strava-client",
 		"build": "ng build",
 		"watch": "ng build --watch --configuration development",
 		"watch:lib": "ng build --watch --configuration development --project ngx-strava-client",
