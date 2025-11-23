@@ -7,17 +7,20 @@ import {
 } from '@angular/core';
 import { ConfigService } from './config.service';
 
-const STRAVA_CLIENT_ID = new InjectionToken<string>('STRAVA_CLIENT_ID');
-const STRAVA_CLIENT_SECRET = new InjectionToken<string>('STRAVA_CLIENT_SECRET');
+export const ENV_STRAVA_CLIENT_ID = new InjectionToken<string>('ENV_STRAVA_CLIENT_ID');
+export const ENV_STRAVA_CLIENT_SECRET = new InjectionToken<string>('ENV_STRAVA_CLIENT_SECRET');
 
 export function provideAppConfig(): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		ConfigService,
-		provideAppInitializer(() => {
+		provideAppInitializer(async () => {
 			const service = inject(ConfigService);
-			return service.load();
+			return await service.load();
 		}),
-		{ provide: STRAVA_CLIENT_ID, useFactory: () => inject(ConfigService).get('clientId') },
-		{ provide: STRAVA_CLIENT_SECRET, useFactory: () => inject(ConfigService).get('clientSecret') },
+		{ provide: ENV_STRAVA_CLIENT_ID, useFactory: () => inject(ConfigService).get('clientId') },
+		{
+			provide: ENV_STRAVA_CLIENT_SECRET,
+			useFactory: () => inject(ConfigService).get('clientSecret'),
+		},
 	]);
 }

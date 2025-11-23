@@ -3,10 +3,12 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
+		"esModuleInterop": true,
 		"strict": true,
 		"noImplicitOverride": true,
 		"noPropertyAccessFromIndexSignature": true,
 		"noImplicitReturns": true,
+		"moduleResolution": "bundler",
 		"noFallthroughCasesInSwitch": true,
 		"skipLibCheck": true,
 		"isolatedModules": true,
@@ -14,9 +16,8 @@
 		"importHelpers": true,
 		"target": "ES2022",
 		"module": "preserve",
-		"baseUrl": "src",
 		"paths": {
-			"@strava": ["app/strava"]
+			"ngx-strava-client": ["./dist/ngx-strava-client"]
 		}
 	},
 	"angularCompilerOptions": {
@@ -30,6 +31,18 @@
 	"references": [
 		{
 			"path": "./tsconfig.app.json"
+		},
+		{
+			"path": "./projects/ngx-strava-client/tsconfig.lib.json"
+		},
+		{
+			"path": "./projects/ngx-strava-client/tsconfig.spec.json"
+		},
+		{
+			"path": "./projects/ngx-strava-client/tsconfig.lib.json"
+		},
+		{
+			"path": "./projects/ngx-strava-client/tsconfig.spec.json"
 		}
 	]
 }
