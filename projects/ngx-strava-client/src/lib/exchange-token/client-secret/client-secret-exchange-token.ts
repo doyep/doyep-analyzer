@@ -19,26 +19,26 @@ import { STRAVA_CLIENT_SECRET } from './client-secret-tokens';
  */
 @Injectable()
 export class ClientSecretExchangeToken extends ExchangeToken {
-	readonly #clientId = inject(STRAVA_CLIENT_ID);
-	readonly #clientSecret = inject(STRAVA_CLIENT_SECRET);
+  readonly #clientId = inject(STRAVA_CLIENT_ID);
+  readonly #clientSecret = inject(STRAVA_CLIENT_SECRET);
 
-	exchange$(authorizationCode: string): Observable<TokenExchangeResponse> {
-		const url = new URL('https://www.strava.com/oauth/token');
-		url.searchParams.set('client_id', this.#clientId);
-		url.searchParams.set('client_secret', this.#clientSecret);
-		url.searchParams.set('code', authorizationCode);
-		url.searchParams.set('grant_type', 'authorization_code');
+  exchange$(authorizationCode: string): Observable<TokenExchangeResponse> {
+    const url = new URL('https://www.strava.com/oauth/token');
+    url.searchParams.set('client_id', this.#clientId);
+    url.searchParams.set('client_secret', this.#clientSecret);
+    url.searchParams.set('code', authorizationCode);
+    url.searchParams.set('grant_type', 'authorization_code');
 
-		return this.http.post<TokenExchangeResponse>(url.toString(), {});
-	}
+    return this.http.post<TokenExchangeResponse>(url.toString(), {});
+  }
 
-	refresh$(refreshToken: string): Observable<RefreshTokenResponse> {
-		const url = new URL('https://www.strava.com/oauth/token');
-		url.searchParams.set('client_id', this.#clientId);
-		url.searchParams.set('client_secret', this.#clientSecret);
-		url.searchParams.set('refresh_token', refreshToken);
-		url.searchParams.set('grant_type', 'refresh_token');
+  refresh$(refreshToken: string): Observable<RefreshTokenResponse> {
+    const url = new URL('https://www.strava.com/oauth/token');
+    url.searchParams.set('client_id', this.#clientId);
+    url.searchParams.set('client_secret', this.#clientSecret);
+    url.searchParams.set('refresh_token', refreshToken);
+    url.searchParams.set('grant_type', 'refresh_token');
 
-		return this.http.post<TokenExchangeResponse>(url.toString(), {});
-	}
+    return this.http.post<TokenExchangeResponse>(url.toString(), {});
+  }
 }

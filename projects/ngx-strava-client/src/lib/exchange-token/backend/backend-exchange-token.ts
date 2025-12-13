@@ -18,18 +18,18 @@ import { BACKEND_EXCHANGE_TOKEN_URL, BACKEND_REFRESH_TOKEN_URL } from './backend
  */
 @Injectable()
 export class BackendEchangeToken extends ExchangeToken {
-	readonly #echangeTokenUrl = inject(BACKEND_EXCHANGE_TOKEN_URL);
-	readonly #refreshTokenUrl = inject(BACKEND_REFRESH_TOKEN_URL);
+  readonly #echangeTokenUrl = inject(BACKEND_EXCHANGE_TOKEN_URL);
+  readonly #refreshTokenUrl = inject(BACKEND_REFRESH_TOKEN_URL);
 
-	override exchange$(authorizationCode: string): Observable<TokenExchangeResponse> {
-		return this.http.post<TokenExchangeResponse>(this.#echangeTokenUrl, {
-			authorizationCode: authorizationCode,
-		});
-	}
+  override exchange$(authorizationCode: string): Observable<TokenExchangeResponse> {
+    return this.http.post<TokenExchangeResponse>(this.#echangeTokenUrl, {
+      authorizationCode: authorizationCode,
+    });
+  }
 
-	override refresh$(refreshToken: string): Observable<RefreshTokenResponse> {
-		return this.http.post<RefreshTokenResponse>(this.#refreshTokenUrl, {
-			refreshToken: refreshToken,
-		});
-	}
+  override refresh$(refreshToken: string): Observable<RefreshTokenResponse> {
+    return this.http.post<RefreshTokenResponse>(this.#refreshTokenUrl, {
+      refreshToken: refreshToken,
+    });
+  }
 }

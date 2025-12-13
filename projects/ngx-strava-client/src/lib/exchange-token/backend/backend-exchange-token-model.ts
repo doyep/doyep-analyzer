@@ -7,6 +7,6 @@
  * - the token refresh operation.
  */
 export type BackendExchangeTokenOptions = {
-	backendExchangeTokenUrl: string;
-	backendRefreshTokenUrl: string;
+  backendExchangeTokenUrl: string;
+  backendRefreshTokenUrl: string;
 };

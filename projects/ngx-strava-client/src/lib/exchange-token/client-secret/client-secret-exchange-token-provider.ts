@@ -2,9 +2,9 @@ import { Provider } from '@angular/core';
 
 import { STRAVA_CLIENT_ID } from '../../access-request';
 import {
-	ClientSecretExchangeTokenOptions,
-	ClientSecretExchangeToken,
-	STRAVA_CLIENT_SECRET,
+  ClientSecretExchangeTokenOptions,
+  ClientSecretExchangeToken,
+  STRAVA_CLIENT_SECRET,
 } from '.';
 import { STRAVA_TOKEN_EXCHANGE_OPTIONS } from '../tokens';
 import { ExchangeToken } from '../shared/exchange-token';
@@ -15,16 +15,16 @@ import { ExchangeToken } from '../shared/exchange-token';
  * @returns An array of Angular providers.
  */
 export function provideClientSecretExchangeToken(): Provider[] {
-	return [
-		{
-			provide: STRAVA_CLIENT_SECRET,
-			useFactory: (options: ClientSecretExchangeTokenOptions) => options.clientSecret,
-			deps: [STRAVA_TOKEN_EXCHANGE_OPTIONS],
-		},
-		{
-			provide: ExchangeToken,
-			useClass: ClientSecretExchangeToken,
-			deps: [STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET],
-		},
-	];
+  return [
+    {
+      provide: STRAVA_CLIENT_SECRET,
+      useFactory: (options: ClientSecretExchangeTokenOptions) => options.clientSecret,
+      deps: [STRAVA_TOKEN_EXCHANGE_OPTIONS],
+    },
+    {
+      provide: ExchangeToken,
+      useClass: ClientSecretExchangeToken,
+      deps: [STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET],
+    },
+  ];
 }

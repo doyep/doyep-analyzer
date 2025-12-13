@@ -1,5 +1,5 @@
 @import 'tailwindcss';
 
 @theme {
-	--font-azonix: "azonix", sans-serif;
+  --font-azonix: 'azonix', sans-serif;
 }

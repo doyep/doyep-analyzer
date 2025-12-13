@@ -35,33 +35,33 @@ type AccessRequestApprovalPrompt = 'force' | 'auto';
  *  any activities that are visible to the app, based on activity read access level
  */
 type AccessRequestScope =
-	| 'read'
-	| 'read_all'
-	| 'profile:read_all'
-	| 'profile:write'
-	| 'activity:read'
-	| 'activity:read_all'
-	| 'activity:write';
+  | 'read'
+  | 'read_all'
+  | 'profile:read_all'
+  | 'profile:write'
+  | 'activity:read'
+  | 'activity:read_all'
+  | 'activity:write';
 
 /**
  * Options needed from Angular Application to perform a strava access request.
  */
 export type AccessRequestOptions = {
-	clientId: string;
-	redirectUri: string;
-	approvalPrompt?: AccessRequestApprovalPrompt;
-	scopes: AccessRequestScope[];
-	state?: string;
+  clientId: string;
+  redirectUri: string;
+  approvalPrompt?: AccessRequestApprovalPrompt;
+  scopes: AccessRequestScope[];
+  state?: string;
 };
 
 /**
  * Params required for Strava Access Request
  */
 export type AccessRequestParams = {
-	clientId: string;
-	redirectUri: string;
-	responseType: AccessRequestResponseType;
-	approvalPrompt?: AccessRequestApprovalPrompt;
-	scope: string;
-	state?: string;
+  clientId: string;
+  redirectUri: string;
+  responseType: AccessRequestResponseType;
+  approvalPrompt?: AccessRequestApprovalPrompt;
+  scope: string;
+  state?: string;
 };

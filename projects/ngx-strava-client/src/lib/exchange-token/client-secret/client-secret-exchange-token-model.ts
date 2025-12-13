@@ -5,5 +5,5 @@
  * Use {@link BackendTokenExchangeService} with a backend-based token exchange instead.
  */
 export type ClientSecretExchangeTokenOptions = {
-	clientSecret: string;
+  clientSecret: string;
 };

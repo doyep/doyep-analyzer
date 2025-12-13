@@ -16,12 +16,12 @@ export type TokenExchangeOptions = ClientSecretExchangeTokenOptions | BackendExc
  * JWT and Athlete datas
  */
 export type TokenExchangeResponse = {
-	token_type: string;
-	expires_at: number;
-	expires_in: number;
-	refresh_token: string;
-	access_token: string;
-	athlete: unknown; // TODO - implement athlete type
+  token_type: string;
+  expires_at: number;
+  expires_in: number;
+  refresh_token: string;
+  access_token: string;
+  athlete: unknown; // TODO - implement athlete type
 };
 
 /**

@@ -5,7 +5,7 @@ import { AccessRequestOptions } from './access-request-model';
  * Injection token providing the configuration options for the access request
  */
 export const STRAVA_ACCESS_REQUEST_OPTIONS = new InjectionToken<AccessRequestOptions>(
-	'STRAVA_ACCESS_REQUEST_OPTIONS',
+  'STRAVA_ACCESS_REQUEST_OPTIONS',
 );
 
 /**

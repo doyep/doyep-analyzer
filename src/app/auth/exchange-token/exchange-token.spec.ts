@@ -8,9 +8,8 @@ describe('ExchangeToken', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExchangeToken]
-    })
-    .compileComponents();
+      imports: [ExchangeToken],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ExchangeToken);
     component = fixture.componentInstance;

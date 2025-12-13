@@ -6,24 +6,24 @@ import { provideClientSecretExchangeToken } from './client-secret';
 import { provideBackendExchangeToken } from './backend';
 
 export function withExchangeToken(
-	type: TokenExchangeType,
-	factory: () => TokenExchangeOptions,
+  type: TokenExchangeType,
+  factory: () => TokenExchangeOptions,
 ): StravaFeature {
-	const providers: Provider[] = [
-		{
-			provide: STRAVA_TOKEN_EXCHANGE_OPTIONS,
-			useFactory: factory,
-			deps: [],
-		},
-	];
+  const providers: Provider[] = [
+    {
+      provide: STRAVA_TOKEN_EXCHANGE_OPTIONS,
+      useFactory: factory,
+      deps: [],
+    },
+  ];
 
-	if (type === 'CLIENT_SECRET') {
-		providers.push(...provideClientSecretExchangeToken());
-	}
+  if (type === 'CLIENT_SECRET') {
+    providers.push(...provideClientSecretExchangeToken());
+  }
 
-	if (type === 'BACKEND') {
-		providers.push(...provideBackendExchangeToken());
-	}
+  if (type === 'BACKEND') {
+    providers.push(...provideBackendExchangeToken());
+  }
 
-	return { ɵproviders: providers };
+  return { ɵproviders: providers };
 }

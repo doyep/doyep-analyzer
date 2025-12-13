@@ -3,7 +3,7 @@ import { makeEnvironmentProviders, Provider } from '@angular/core';
  * Represents a Strava feature registered through the `withX()` API.
  */
 export type StravaFeature = {
-	ɵproviders: Provider[];
+  ɵproviders: Provider[];
 };
 
 /**
@@ -12,5 +12,5 @@ export type StravaFeature = {
  * @returns Environment providers containing all providers declared by the supplied features.
  */
 export function provideStravaServices(...features: StravaFeature[]) {
-	return makeEnvironmentProviders([...features.flatMap((features) => features.ɵproviders)]);
+  return makeEnvironmentProviders([...features.flatMap((features) => features.ɵproviders)]);
 }

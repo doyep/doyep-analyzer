@@ -7,15 +7,15 @@ import { RefreshTokenResponse, TokenExchangeResponse } from './token-exchange-mo
 
 @Injectable()
 export abstract class ExchangeToken {
-	protected readonly http = inject(HttpClient);
+  protected readonly http = inject(HttpClient);
 
-	abstract exchange$(authorizationCode: string): Observable<TokenExchangeResponse>;
-	abstract refresh$(refreshToken: string): Observable<RefreshTokenResponse>;
+  abstract exchange$(authorizationCode: string): Observable<TokenExchangeResponse>;
+  abstract refresh$(refreshToken: string): Observable<RefreshTokenResponse>;
 
-	deauthorize$(accessToken: string): Observable<object> {
-		const url = new URL('https://www.strava.com/oauth/deauthorize');
-		url.searchParams.set('access_token', accessToken);
+  deauthorize$(accessToken: string): Observable<object> {
+    const url = new URL('https://www.strava.com/oauth/deauthorize');
+    url.searchParams.set('access_token', accessToken);
 
-		return this.http.post(url.toString(), {});
-	}
+    return this.http.post(url.toString(), {});
+  }
 }
