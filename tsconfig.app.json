@@ -6,6 +6,6 @@
 		"outDir": "./out-tsc/app",
 		"types": []
 	},
-	"include": ["src/**/*.ts"],
+	"include": ["src/**/*.ts", "projects/ngx-strava-client/src/lib/auth-store/auth-store.ts"],
 	"exclude": ["src/**/*.spec.ts"]
 }

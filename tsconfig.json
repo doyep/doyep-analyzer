@@ -3,6 +3,7 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
+		"baseUrl": ".",
 		"esModuleInterop": true,
 		"strict": true,
 		"noImplicitOverride": true,
@@ -17,7 +18,7 @@
 		"target": "ES2022",
 		"module": "preserve",
 		"paths": {
-			"ngx-strava-client": ["./dist/ngx-strava-client"]
+			"ngx-strava-client": ["projects/ngx-strava-client/src/public-api.ts"]
 		}
 	},
 	"angularCompilerOptions": {
