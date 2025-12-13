@@ -7,7 +7,7 @@ import {
   BackendEchangeToken,
 } from '.';
 import { STRAVA_TOKEN_EXCHANGE_OPTIONS } from '../tokens';
-import { ExchangeToken } from '../shared/exchange-token';
+import { ExchangeTokenService } from '../shared';
 
 /**
  * This function registers all providers required for the {@link BackendEchangeToken},
@@ -27,7 +27,7 @@ export function provideBackendExchangeToken(): Provider[] {
       deps: [STRAVA_TOKEN_EXCHANGE_OPTIONS],
     },
     {
-      provide: ExchangeToken,
+      provide: ExchangeTokenService,
       useClass: BackendEchangeToken,
       deps: [BACKEND_EXCHANGE_TOKEN_URL, BACKEND_REFRESH_TOKEN_URL],
     },

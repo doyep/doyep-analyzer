@@ -7,7 +7,7 @@ import {
   STRAVA_CLIENT_SECRET,
 } from '.';
 import { STRAVA_TOKEN_EXCHANGE_OPTIONS } from '../tokens';
-import { ExchangeToken } from '../shared/exchange-token';
+import { ExchangeTokenService } from '../shared';
 
 /**
  * This function registers all providers required for the {@link ClientSecretTokenExchangeService},
@@ -22,7 +22,7 @@ export function provideClientSecretExchangeToken(): Provider[] {
       deps: [STRAVA_TOKEN_EXCHANGE_OPTIONS],
     },
     {
-      provide: ExchangeToken,
+      provide: ExchangeTokenService,
       useClass: ClientSecretExchangeToken,
       deps: [STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET],
     },

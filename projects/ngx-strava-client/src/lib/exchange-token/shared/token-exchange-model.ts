@@ -1,3 +1,4 @@
+import { SummaryAthlete } from '../../athlete/athlete-model';
 import { BackendExchangeTokenOptions } from '../backend';
 import { ClientSecretExchangeTokenOptions } from '../client-secret';
 
@@ -21,7 +22,7 @@ export type TokenExchangeResponse = {
   expires_in: number;
   refresh_token: string;
   access_token: string;
-  athlete: unknown; // TODO - implement athlete type
+  athlete: SummaryAthlete;
 };
 
 /**

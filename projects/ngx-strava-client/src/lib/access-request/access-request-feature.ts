@@ -35,7 +35,7 @@ export function withAccessRequest(factory: () => AccessRequestOptions): StravaFe
       { provide: STRAVA_ACCESS_REQUEST_OPTIONS, useFactory: factory, deps: [] },
       {
         provide: STRAVA_CLIENT_ID,
-        useValue: (options: AccessRequestOptions) => options.clientId,
+        useFactory: (options: AccessRequestOptions) => options.clientId,
         deps: [STRAVA_ACCESS_REQUEST_OPTIONS],
       },
       {

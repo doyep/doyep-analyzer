@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { RefreshTokenResponse, TokenExchangeResponse } from './token-exchange-model';
 
 @Injectable()
-export abstract class ExchangeToken {
+export abstract class ExchangeTokenService {
   protected readonly http = inject(HttpClient);
 
   abstract exchange$(authorizationCode: string): Observable<TokenExchangeResponse>;

@@ -34,7 +34,7 @@ type AccessRequestApprovalPrompt = 'force' | 'auto';
  * `activity:write` : access to create manual activities and uploads, and access to edit
  *  any activities that are visible to the app, based on activity read access level
  */
-type AccessRequestScope =
+export type AccessRequestScope =
   | 'read'
   | 'read_all'
   | 'profile:read_all'

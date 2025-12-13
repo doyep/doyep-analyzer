@@ -3,9 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { STRAVA_CLIENT_ID } from '../../access-request';
-import { ExchangeToken } from '../shared/exchange-token';
 import { RefreshTokenResponse, TokenExchangeResponse } from '../shared/token-exchange-model';
 import { STRAVA_CLIENT_SECRET } from './client-secret-tokens';
+import { ExchangeTokenService } from '../shared';
 
 /**
  * @deprecated This service performs the OAuth2 token exchange directly from the client
@@ -18,7 +18,7 @@ import { STRAVA_CLIENT_SECRET } from './client-secret-tokens';
  * This class is kept for legacy or fallback scenarios in which no backend is available.
  */
 @Injectable()
-export class ClientSecretExchangeToken extends ExchangeToken {
+export class ClientSecretExchangeToken extends ExchangeTokenService {
   readonly #clientId = inject(STRAVA_CLIENT_ID);
   readonly #clientSecret = inject(STRAVA_CLIENT_SECRET);
 
