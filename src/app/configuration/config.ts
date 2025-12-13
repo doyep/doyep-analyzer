@@ -1,4 +1,5 @@
 export type AppConfig = {
-	clientId: string;
-	clientSecret: string;
+  clientId: string;
+  clientSecret: string;
+  whiteList: string;
 };
