@@ -33,10 +33,18 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": "Compilation complete."
           }
         }
       }
+    },
+    {
+      "label": "npm: watchlib and dev",
+      "dependsOn": [
+        "npm: watch:lib",
+        "npm: dev",
+      ],
+      "dependsOrder": "parallel",
     }
   ]
 }
