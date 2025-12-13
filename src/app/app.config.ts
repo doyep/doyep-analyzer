@@ -13,6 +13,7 @@ import {
   withExchangeToken,
   withAccessRequest,
   AccessRequestOptions,
+  withAuthStore,
 } from 'ngx-strava-client';
 
 export const appConfig: ApplicationConfig = {
@@ -21,17 +22,19 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAppConfig(),
     provideStravaServices(
-      withAccessRequest(() => {
-        return {
-          clientId: inject(ENV_STRAVA_CLIENT_ID),
-          redirectUri: `${inject(DOCUMENT).location.origin}/exchange-token`,
-          approvalPrompt: 'force',
-          scopes: ['read', 'read_all', 'profile:read_all', 'activity:read_all'],
-        } as AccessRequestOptions;
-      }),
+      withAccessRequest(
+        () =>
+          ({
+            clientId: inject(ENV_STRAVA_CLIENT_ID),
+            redirectUri: `${inject(DOCUMENT).location.origin}/exchange-token`,
+            approvalPrompt: 'force',
+            scopes: ['read', 'read_all', 'profile:read_all', 'activity:read_all'],
+          }) as AccessRequestOptions,
+      ),
       withExchangeToken('CLIENT_SECRET', () => ({
         clientSecret: inject(ENV_STRAVA_CLIENT_SECRET),
       })),
+      withAuthStore(),
     ),
   ],
 };
