@@ -1,7 +1,6 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { JsonPipe } from '@angular/common';
 
 import { AuthStore } from 'ngx-strava-client';
 
@@ -11,7 +10,6 @@ import { StravaButton } from '../strava-button/strava-button';
 
 @Component({
   template: `
-    <pre>{{ whiteList }}</pre>
     @if (accessDenied()) {
       ACCESS DENIED, PLEASE RETRY
       <app-strava-button />
@@ -20,14 +18,13 @@ import { StravaButton } from '../strava-button/strava-button';
     } @else if (authStore.hasError()) {
       ERROR, PLEASE RETRY
       <app-strava-button />
-    } @else {
+    } @else if (authStore.currentUser()) {
       <pre>{{ authStore.isAuth() }}</pre>
       <img class="rounded-2xl" [src]="authStore.currentUser()?.profile_medium" />
-      <pre>{{ authStore.currentUser() | json }}</pre>
-      <pre>{{ authStore.authorizedScopes() }}</pre>
+      <pre>{{ whiteList.includes(authStore.currentUser()?.id ?? 0) }}</pre>
     }
   `,
-  imports: [JsonPipe, StravaButton],
+  imports: [StravaButton],
 })
 export class ExchangeToken {
   readonly #route = inject(ActivatedRoute);

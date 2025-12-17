@@ -3,24 +3,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "dev",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
-      }
-    },
-    {
+      "label": "pnpm watch:lib",
       "type": "npm",
       "script": "watch:lib",
       "isBackground": true,
@@ -39,12 +22,31 @@
       }
     },
     {
+      "label": "pnpm dev",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      }
+    },
+    {
       "label": "npm: watchlib and dev",
       "dependsOn": [
-        "npm: watch:lib",
-        "npm: dev",
+        "pnpm watch:lib",
+        "pnpm dev",
       ],
       "dependsOrder": "parallel",
-    }
+    },
   ]
 }

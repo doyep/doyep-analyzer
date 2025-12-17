@@ -9,7 +9,7 @@ import { ConfigService } from './config.service';
 
 export const ENV_STRAVA_CLIENT_ID = new InjectionToken<string>('ENV_STRAVA_CLIENT_ID');
 export const ENV_STRAVA_CLIENT_SECRET = new InjectionToken<string>('ENV_STRAVA_CLIENT_SECRET');
-export const ENV_WHITE_LIST = new InjectionToken<string>('ENV_WHITE_LIST');
+export const ENV_WHITE_LIST = new InjectionToken<number[]>('ENV_WHITE_LIST');
 
 export function provideAppConfig(): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -25,7 +25,10 @@ export function provideAppConfig(): EnvironmentProviders {
     },
     {
       provide: ENV_WHITE_LIST,
-      useFactory: () => inject(ConfigService).get('whiteList').split(','),
+      useFactory: () => {
+        const whiteList = inject(ConfigService).get('whiteList');
+        return whiteList.split(',').map(Number);
+      },
     },
   ]);
 }
